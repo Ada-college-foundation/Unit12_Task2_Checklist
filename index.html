@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BTEC Level 1 &amp; 2 Unit 12 – Evidence Checklist</title>
+  <style>
+    /* ── Reset & base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f4f8;
+      color: #1a202c;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    /* ── Page header ──────────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+      color: #fff;
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    }
+
+    header h1 { font-size: 1.6rem; margin-bottom: .3rem; }
+    header p  { font-size: .95rem; opacity: .85; }
+
+    /* ── Progress summary bar ─────────────────────────────────── */
+    .summary {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,.08);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .summary h2 { font-size: 1rem; font-weight: 600; flex: 1 0 100%; }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+    .stat .dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-red    { background: #c53030; }
+    .dot-amber  { background: #d97706; }
+    .dot-green  { background: #276749; }
+
+    .progress-bar-wrap {
+      flex: 1 0 100%;
+      background: #e2e8f0;
+      border-radius: 99px;
+      height: 10px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #38a169;
+      border-radius: 99px;
+      transition: width .4s ease;
+    }
+    .progress-label { font-size: .85rem; color: #4a5568; }
+
+    /* ── Legend key ──────────────────────────────────────────── */
+    .legend {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,.08);
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem 2rem;
+      font-size: .88rem;
+    }
+    .legend strong { flex: 1 0 100%; font-size: .9rem; }
+    .legend-item { display: flex; align-items: center; gap: .4rem; }
+    .legend-swatch {
+      display: inline-block; width: 18px; height: 14px;
+      border-radius: 4px;
+    }
+    .swatch-red   { background: #fed7d7; border: 1.5px solid #c53030; }
+    .swatch-amber { background: #fef3c7; border: 1.5px solid #d97706; }
+    .swatch-green { background: #c6f6d5; border: 1.5px solid #276749; }
+
+    /* ── Main table card ──────────────────────────────────────── */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    /* Section header rows */
+    .section-row td {
+      background: #2b6cb0;
+      color: #fff;
+      font-weight: 700;
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      letter-spacing: .02em;
+    }
+
+    /* Column headings */
+    thead th {
+      background: #2d3748;
+      color: #e2e8f0;
+      font-size: .82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: .65rem 1rem;
+      text-align: left;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    /* Data rows */
+    tbody tr.task-row {
+      border-bottom: 1px solid #e2e8f0;
+      transition: background .15s;
+    }
+    tbody tr.task-row:hover { background: #f7fafc; }
+
+    td {
+      padding: .7rem 1rem;
+      vertical-align: middle;
+      font-size: .9rem;
+    }
+
+    /* Colour-coded status row backgrounds */
+    .status-red    { background: #fff5f5 !important; }
+    .status-amber  { background: #fffbeb !important; }
+    .status-green  { background: #f0fff4 !important; }
+
+    /* ── Checkbox (done tick) ─────────────────────────────────── */
+    .done-check {
+      width: 20px; height: 20px;
+      cursor: pointer;
+      accent-color: #38a169;
+    }
+
+    /* ── Status select ────────────────────────────────────────── */
+    .status-select {
+      border: 1.5px solid #cbd5e0;
+      border-radius: 6px;
+      padding: .3rem .5rem;
+      font-size: .85rem;
+      cursor: pointer;
+      background: #fff;
+      transition: border-color .2s;
+    }
+    .status-select:focus { outline: none; border-color: #4299e1; }
+
+    /* Colour-coded select backgrounds */
+    .sel-red   { background: #fed7d7; border-color: #c53030; color: #742a2a; }
+    .sel-amber { background: #fef3c7; border-color: #d97706; color: #78350f; }
+    .sel-green { background: #c6f6d5; border-color: #276749; color: #22543d; }
+
+    /* ── Deadline pill ────────────────────────────────────────── */
+    .deadline {
+      white-space: nowrap;
+      font-size: .82rem;
+      color: #4a5568;
+    }
+    .deadline.overdue { color: #c53030; font-weight: 700; }
+
+    /* ── Notes textarea ───────────────────────────────────────── */
+    .notes-input {
+      width: 100%;
+      min-width: 140px;
+      resize: vertical;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 6px;
+      padding: .3rem .5rem;
+      font-size: .82rem;
+      font-family: inherit;
+      background: #f7fafc;
+    }
+    .notes-input:focus { outline: none; border-color: #4299e1; background: #fff; }
+
+    /* ── Reset button ─────────────────────────────────────────── */
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1.5rem;
+    }
+    .btn-reset {
+      background: #e53e3e;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: .6rem 1.2rem;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-reset:hover { background: #c53030; }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      table { display: block; overflow-x: auto; }
+      header h1 { font-size: 1.2rem; }
+    }
+
+    footer {
+      text-align: center;
+      font-size: .8rem;
+      color: #718096;
+      padding-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📋 BTEC Level 1 &amp; 2 – Unit 12: Software Development</h1>
+  <p>Evidence Checklist &nbsp;·&nbsp; Pearson BTEC Specification &nbsp;·&nbsp; Assignment 2</p>
+</header>
+
+<!-- ── Progress summary ─────────────────────────────── -->
+<div class="summary" id="summary">
+  <h2>Overall Progress</h2>
+  <div class="stat"><span class="dot dot-red"></span>   <span id="cnt-red">0</span> Not Started</div>
+  <div class="stat"><span class="dot dot-amber"></span> <span id="cnt-amber">0</span> In Progress</div>
+  <div class="stat"><span class="dot dot-green"></span> <span id="cnt-green">0</span> Complete</div>
+  <span class="progress-label" id="pct-label">0 % complete</span>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- ── Colour key ──────────────────────────────────── -->
+<div class="legend">
+  <strong>Colour Key</strong>
+  <div class="legend-item"><span class="legend-swatch swatch-red"></span>   Not Started</div>
+  <div class="legend-item"><span class="legend-swatch swatch-amber"></span> In Progress</div>
+  <div class="legend-item"><span class="legend-swatch swatch-green"></span> Complete</div>
+</div>
+
+<!-- ── Reset button ───────────────────────────────── -->
+<div class="actions">
+  <button class="btn-reset" id="btn-reset">🔄 Reset All Progress</button>
+</div>
+
+<!-- ── Checklist table ────────────────────────────── -->
+<div class="card">
+<table>
+  <thead>
+    <tr>
+      <th style="width:2rem">✔</th>
+      <th>Evidence Item</th>
+      <th>Deadline</th>
+      <th>Status</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody id="checklist-body">
+
+    <!-- ══ Section 1 ══════════════════════════════════════════ -->
+    <tr class="section-row"><td colspan="5">🎮 Initials Game Ideas – Showcase the Potential of Emojis</td></tr>
+    <tr class="task-row" data-id="1">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Detail your research and consideration before creating the game</td>
+      <td><span class="deadline" data-date="2026-03-14">14/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 2 ══════════════════════════════════════════ -->
+    <tr class="section-row"><td colspan="5">✏️ Design of First Game Idea</td></tr>
+    <tr class="task-row" data-id="2">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Storyboard for Idea A</td>
+      <td><span class="deadline" data-date="2026-01-17">17/01/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="3">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Storyboard for Idea B</td>
+      <td><span class="deadline" data-date="2026-01-17">17/01/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 3 ══════════════════════════════════════════ -->
+    <tr class="section-row"><td colspan="5">✏️ Design of Second Game Idea</td></tr>
+    <tr class="task-row" data-id="4">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Planning brainstorm / mind map</td>
+      <td><span class="deadline" data-date="2026-01-17">17/01/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="5">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Game Design Description</td>
+      <td><span class="deadline" data-date="2025-01-17">17/01/2025</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 4 ══════════════════════════════════════════ -->
+    <tr class="section-row"><td colspan="5">👥 Review Game Design with a Colleague</td></tr>
+    <tr class="task-row" data-id="6">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Photo of you talking and reviewing the game with someone</td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="7">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Notes taken and feedback from colleague</td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="8">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Written-up paragraph of refinements you will make after feedback (Reflection)</td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="9">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>New (updated) version of game design documents for final game design</td>
+      <td><span class="deadline" data-date="2026-04-17">17/04/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 5 ══════════════════════════════════════════ -->
+    <tr class="section-row"><td colspan="5">📝 Written Justification of Design Decisions</td></tr>
+    <tr class="task-row" data-id="10">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Written evidence showing how game design fulfils purpose (assessment brief)</td>
+      <td><span class="deadline" data-date="2025-03-21">21/03/2025</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 6 ══════════════════════════════════════════ -->
+    <tr class="section-row"><td colspan="5">💻 Produce a Computer Game to Meet Client Requirements</td></tr>
+    <tr class="task-row" data-id="11">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Beta version of game written in Pygame</td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="12">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Final Asset List</td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="13">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Final game code playable using an IDLE</td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="14">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Game has sound</td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="15">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Development diary (change log and justification) – 10 entries minimum</td>
+      <td><span class="deadline" data-date="2025-04-25">Ongoing until&nbsp;25/04/2025</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 7 ══════════════════════════════════════════ -->
+    <tr class="section-row"><td colspan="5">🧪 Testing of Developed Computer Game</td></tr>
+    <tr class="task-row" data-id="16">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Completed Functional Testing against Test Plan – plus evidence tests worked OK</td>
+      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="17">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Evidence of testing game with peers (fellow Y12/Y13 students and/or teachers)</td>
+      <td><span class="deadline" data-date="2026-05-16">16/05/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 8 ══════════════════════════════════════════ -->
+    <tr class="section-row"><td colspan="5">📄 Written Review of (Pre-Optimised) Developed Computer Game</td></tr>
+    <tr class="task-row" data-id="18">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Review if game meets client requirements (200–300 words)</td>
+      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 9 ══════════════════════════════════════════ -->
+    <tr class="section-row"><td colspan="5">⚙️ Optimise Developed Computer Game Based on Testing and User Feedback</td></tr>
+    <tr class="task-row" data-id="19">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Written justifications for and details of all optimisations with screenshots</td>
+      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 10 ═════════════════════════════════════════ -->
+    <tr class="section-row"><td colspan="5">📊 Written Evaluation of Final (Optimised) Developed Game</td></tr>
+    <tr class="task-row" data-id="20">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Detailing how the game could be extended</td>
+      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="21">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Evaluating how well the game worked compared to client requirements</td>
+      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 11 ═════════════════════════════════════════ -->
+    <tr class="section-row"><td colspan="5">🗂️ Written Evidence of Detailed Planning</td></tr>
+    <tr class="task-row" data-id="22">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Detailed discussion of development of the game</td>
+      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+<footer>BTEC Level 1 &amp; 2 Unit 12: Software Development &nbsp;·&nbsp; Pearson BTEC Specification</footer>
+
+<script>
+  /* ── Storage key ─────────────────────────────────────────── */
+  const STORAGE_KEY = 'unit12_checklist_v1';
+
+  /* ── Helpers ─────────────────────────────────────────────── */
+  const rows = () => document.querySelectorAll('tr.task-row');
+
+  function statusClass(val) {
+    if (val === 'Complete')    return 'status-green';
+    if (val === 'In Progress') return 'status-amber';
+    return 'status-red';
+  }
+
+  function selectClass(val) {
+    if (val === 'Complete')    return 'sel-green';
+    if (val === 'In Progress') return 'sel-amber';
+    return 'sel-red';
+  }
+
+  /* ── Apply styles to a row based on current state ───────── */
+  function applyRowStyles(row) {
+    const sel    = row.querySelector('.status-select');
+    const cb     = row.querySelector('.done-check');
+    const val    = sel.value;
+    const done   = cb.checked;
+
+    /* If checkbox ticked, force Complete */
+    if (done && val !== 'Complete') {
+      sel.value = 'Complete';
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+      return;
+    }
+    /* If status set to Complete, tick the checkbox */
+    if (val === 'Complete' && !done) {
+      cb.checked = true;
+    }
+
+    /* Row background */
+    row.classList.remove('status-red', 'status-amber', 'status-green');
+    row.classList.add(statusClass(sel.value));
+
+    /* Select colour */
+    sel.classList.remove('sel-red', 'sel-amber', 'sel-green');
+    sel.classList.add(selectClass(sel.value));
+  }
+
+  /* ── Mark overdue deadlines ──────────────────────────────── */
+  function markOverdue() {
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    document.querySelectorAll('.deadline[data-date]').forEach(el => {
+      const d = new Date(el.dataset.date);
+      if (d < today) el.classList.add('overdue');
+    });
+  }
+
+  /* ── Update progress summary ─────────────────────────────── */
+  function updateSummary() {
+    let red = 0, amber = 0, green = 0;
+    rows().forEach(row => {
+      const v = row.querySelector('.status-select').value;
+      if (v === 'Complete')    green++;
+      else if (v === 'In Progress') amber++;
+      else red++;
+    });
+    const total = red + amber + green;
+    const pct   = total === 0 ? 0 : Math.round((green / total) * 100);
+
+    document.getElementById('cnt-red').textContent   = red;
+    document.getElementById('cnt-amber').textContent = amber;
+    document.getElementById('cnt-green').textContent = green;
+    document.getElementById('pct-label').textContent = pct + ' % complete';
+    document.getElementById('progress-bar').style.width = pct + '%';
+  }
+
+  /* ── Save state to localStorage ─────────────────────────── */
+  function saveState() {
+    const state = {};
+    rows().forEach(row => {
+      const id = row.dataset.id;
+      state[id] = {
+        status: row.querySelector('.status-select').value,
+        checked: row.querySelector('.done-check').checked,
+        notes: row.querySelector('.notes-input').value
+      };
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  /* ── Load state from localStorage ───────────────────────── */
+  function loadState() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    try {
+      const state = JSON.parse(raw);
+      rows().forEach(row => {
+        const id  = row.dataset.id;
+        const saved = state[id];
+        if (!saved) return;
+        const sel = row.querySelector('.status-select');
+        const cb  = row.querySelector('.done-check');
+        const ta  = row.querySelector('.notes-input');
+        sel.value  = saved.status  || 'Not Started';
+        cb.checked = !!saved.checked;
+        ta.value   = saved.notes   || '';
+        applyRowStyles(row);
+      });
+    } catch(e) { /* ignore corrupt data */ }
+  }
+
+  /* ── Wire up events ──────────────────────────────────────── */
+  function wireEvents() {
+    rows().forEach(row => {
+      const sel = row.querySelector('.status-select');
+      const cb  = row.querySelector('.done-check');
+      const ta  = row.querySelector('.notes-input');
+
+      sel.addEventListener('change', () => { applyRowStyles(row); updateSummary(); saveState(); });
+      cb.addEventListener('change',  () => { applyRowStyles(row); updateSummary(); saveState(); });
+      ta.addEventListener('input',   () => { saveState(); });
+    });
+
+    document.getElementById('btn-reset').addEventListener('click', () => {
+      if (!confirm('Reset ALL progress? This cannot be undone.')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      rows().forEach(row => {
+        row.querySelector('.status-select').value = 'Not Started';
+        row.querySelector('.done-check').checked  = false;
+        row.querySelector('.notes-input').value   = '';
+        applyRowStyles(row);
+      });
+      updateSummary();
+    });
+  }
+
+  /* ── Init ────────────────────────────────────────────────── */
+  function init() {
+    /* Apply initial default styles */
+    rows().forEach(row => applyRowStyles(row));
+    markOverdue();
+    loadState();
+    updateSummary();
+    wireEvents();
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
