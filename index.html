@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BTEC Level 1 &amp; 2 Unit 12 – Evidence Checklist</title>
+  <title>BTEC Unit 12 – Task 2: Design the Program – Evidence Checklist</title>
   <style>
     /* ── Reset & base ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -224,6 +224,62 @@
       header h1 { font-size: 1.2rem; }
     }
 
+    /* ── Assignment brief panel ───────────────────────────────── */
+    .brief-panel {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,.08);
+      border-left: 5px solid #2b6cb0;
+    }
+    .brief-panel h2 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #2b6cb0;
+      margin-bottom: .7rem;
+      letter-spacing: .02em;
+    }
+    .brief-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: .3rem 1rem;
+      font-size: .875rem;
+    }
+    .brief-label {
+      font-weight: 600;
+      color: #4a5568;
+      white-space: nowrap;
+    }
+    .brief-value { color: #1a202c; }
+    .brief-value.date-highlight {
+      font-weight: 700;
+      color: #c53030;
+    }
+    .brief-value.issue-highlight {
+      font-weight: 700;
+      color: #276749;
+    }
+
+    /* ── Criteria badge ───────────────────────────────────────── */
+    .criteria {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: .15rem .45rem;
+      border-radius: 4px;
+      background: #ebf4ff;
+      color: #2b6cb0;
+      border: 1px solid #bee3f8;
+      white-space: nowrap;
+      margin: .1rem .1rem .1rem 0;
+    }
+    .criteria-d2 { background: #f0fff4; color: #276749; border-color: #9ae6b4; }
+    .criteria-m2 { background: #fffff0; color: #744210; border-color: #f6e05e; }
+    .criteria-p3 { background: #ebf4ff; color: #2b6cb0; border-color: #bee3f8; }
+    .criteria-1b { background: #fff5f5; color: #742a2a; border-color: #feb2b2; }
+
     footer {
       text-align: center;
       font-size: .8rem;
@@ -236,8 +292,29 @@
 
 <header>
   <h1>📋 BTEC Level 1 &amp; 2 – Unit 12: Software Development</h1>
-  <p>Evidence Checklist &nbsp;·&nbsp; Pearson BTEC Specification &nbsp;·&nbsp; Assignment 2</p>
+  <p>Assignment 2: Design a 2D Game using Pygame &nbsp;·&nbsp; Task 2: Design the Program &nbsp;·&nbsp; Assessor: Christopher Moss</p>
 </header>
+
+<!-- ── Assignment Brief Info Panel ─────────────────── -->
+<div class="brief-panel">
+  <h2>📄 Assignment Brief</h2>
+  <div class="brief-grid">
+    <span class="brief-label">Qualification:</span>
+    <span class="brief-value">Pearson BTEC Level 1/2 Extended Certificate in Information and Creative Technology</span>
+    <span class="brief-label">Unit:</span>
+    <span class="brief-value">Unit 12: Software Development</span>
+    <span class="brief-label">Learning Aim:</span>
+    <span class="brief-value">B: Design a software program</span>
+    <span class="brief-label">Assignment Title:</span>
+    <span class="brief-value">Assignment 2: Design a 2D Game using Pygame</span>
+    <span class="brief-label">Assessor:</span>
+    <span class="brief-value">Christopher Moss</span>
+    <span class="brief-label">Issue Date:</span>
+    <span class="brief-value issue-highlight">Monday 26th January 2026</span>
+    <span class="brief-label">Hand-in Deadline:</span>
+    <span class="brief-value date-highlight">Friday 27th March 2026 &nbsp;·&nbsp; 3:59pm</span>
+  </div>
+</div>
 
 <!-- ── Progress summary ─────────────────────────────── -->
 <div class="summary" id="summary">
@@ -249,6 +326,18 @@
   <div class="progress-bar-wrap">
     <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
   </div>
+</div>
+
+<!-- ── Criteria key ─────────────────────────────────── -->
+<div class="legend">
+  <strong>Criteria Key</strong>
+  <div class="legend-item"><span class="criteria criteria-p2">2B.P2</span> Describe the purpose and user requirements for the software program.</div>
+  <div class="legend-item"><span class="criteria criteria-p3">2B.P3</span> Produce a design including a problem definition, two proposed solutions and a list of pre-defined functions/subroutines.</div>
+  <div class="legend-item"><span class="criteria criteria-m2">2B.M2</span> Produce a detailed design including alternative solutions, a range of design tools and test data.</div>
+  <div class="legend-item"><span class="criteria criteria-d2">2B.D2</span> Justify the design decisions including how they fulfil the stated purpose and any design constraints.</div>
+  <div class="legend-item" style="flex:1 0 100%; margin-top:.5rem; font-size:.82rem; color:#718096; font-style:italic;">Level 1 fallback criteria (if Level 2 not achieved):</div>
+  <div class="legend-item"><span class="criteria criteria-1b">1B.2</span> Identify the purpose and user requirements for the software program.</div>
+  <div class="legend-item"><span class="criteria criteria-1b">1B.3</span> Produce, with guidance, a design including a problem definition statement and an outline of the proposed solution.</div>
 </div>
 
 <!-- ── Colour key ──────────────────────────────────── -->
@@ -271,6 +360,7 @@
     <tr>
       <th style="width:2rem">✔</th>
       <th>Evidence Item</th>
+      <th>Criteria</th>
       <th>Deadline</th>
       <th>Status</th>
       <th>Notes</th>
@@ -278,189 +368,242 @@
   </thead>
   <tbody id="checklist-body">
 
-    <!-- ══ Section 1 ══════════════════════════════════════════ -->
-    <tr class="section-row"><td colspan="5">🎮 Initials Game Ideas – Showcase the Potential of Emojis</td></tr>
+    <!-- ══ Section 1: User Requirements & Purpose ════════════ -->
+    <tr class="section-row"><td colspan="6">📋 User Requirements &amp; Purpose of the Software</td></tr>
     <tr class="task-row" data-id="1">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Detail your research and consideration before creating the game</td>
-      <td><span class="deadline" data-date="2026-03-14">14/03/2026</span></td>
+      <td>Description of the user requirements for the 2D game (ages 7+), including who the intended users are and what they need</td>
+      <td><span class="criteria criteria-p2">2B.P2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
-
-    <!-- ══ Section 2 ══════════════════════════════════════════ -->
-    <tr class="section-row"><td colspan="5">✏️ Design of First Game Idea</td></tr>
     <tr class="task-row" data-id="2">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Storyboard for Idea A</td>
-      <td><span class="deadline" data-date="2026-01-17">17/01/2026</span></td>
+      <td>Intended purpose of the software – what the game is designed to achieve and its educational/entertainment value</td>
+      <td><span class="criteria criteria-p2">2B.P2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
     <tr class="task-row" data-id="3">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Storyboard for Idea B</td>
-      <td><span class="deadline" data-date="2026-01-17">17/01/2026</span></td>
+      <td>Choice of project name – the game title and brief explanation for the name</td>
+      <td><span class="criteria criteria-p2">2B.P2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
 
-    <!-- ══ Section 3 ══════════════════════════════════════════ -->
-    <tr class="section-row"><td colspan="5">✏️ Design of Second Game Idea</td></tr>
+    <!-- ══ Section 2: Problem Definition Statement ═══════════ -->
+    <tr class="section-row"><td colspan="6">⚠️ Problem Definition Statement</td></tr>
     <tr class="task-row" data-id="4">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Planning brainstorm / mind map</td>
-      <td><span class="deadline" data-date="2026-01-17">17/01/2026</span></td>
+      <td>Problem definition – outlines technical issues anticipated during the build, including the <strong>functionality of the game</strong> (what it must do)</td>
+      <td><span class="criteria criteria-p3">2B.P3</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
     <tr class="task-row" data-id="5">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Game Design Description</td>
-      <td><span class="deadline" data-date="2025-01-17">17/01/2025</span></td>
-      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
-      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
-    </tr>
-
-    <!-- ══ Section 4 ══════════════════════════════════════════ -->
-    <tr class="section-row"><td colspan="5">👥 Review Game Design with a Colleague</td></tr>
-    <tr class="task-row" data-id="6">
-      <td><input type="checkbox" class="done-check" /></td>
-      <td>Photo of you talking and reviewing the game with someone</td>
+      <td>Problem definition – the <strong>script structure</strong> (how the code will be organised, e.g. classes, modules, functions)</td>
+      <td><span class="criteria criteria-p3">2B.P3</span></td>
       <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
+    <tr class="task-row" data-id="6">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Problem definition – the <strong>relationship between program inputs and outputs</strong> (e.g. keyboard/mouse → game events → screen/sound)</td>
+      <td><span class="criteria criteria-p3">2B.P3</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 3: Two Proposed Storyboards ═══════════════ -->
+    <tr class="section-row"><td colspan="6">🎨 Two Proposed Solutions – Storyboards / Screen Designs</td></tr>
     <tr class="task-row" data-id="7">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Notes taken and feedback from colleague</td>
+      <td>Storyboard / screen design for <strong>Proposed Solution A</strong> – annotated sketches or digital mockups of all key game screens</td>
+      <td><span class="criteria criteria-p3">2B.P3</span> <span class="criteria criteria-m2">2B.M2</span></td>
       <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
     <tr class="task-row" data-id="8">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Written-up paragraph of refinements you will make after feedback (Reflection)</td>
+      <td>Storyboard / screen design for <strong>Proposed Solution B</strong> – annotated sketches or digital mockups of all key game screens</td>
+      <td><span class="criteria criteria-p3">2B.P3</span> <span class="criteria criteria-m2">2B.M2</span></td>
       <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
     <tr class="task-row" data-id="9">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>New (updated) version of game design documents for final game design</td>
-      <td><span class="deadline" data-date="2026-04-17">17/04/2026</span></td>
+      <td>Annotations on both storyboards showing <strong>functions used and their purpose</strong> (e.g. draw(), update(), handle_input())</td>
+      <td><span class="criteria criteria-p3">2B.P3</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
-
-    <!-- ══ Section 5 ══════════════════════════════════════════ -->
-    <tr class="section-row"><td colspan="5">📝 Written Justification of Design Decisions</td></tr>
     <tr class="task-row" data-id="10">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Written evidence showing how game design fulfils purpose (assessment brief)</td>
-      <td><span class="deadline" data-date="2025-03-21">21/03/2025</span></td>
+      <td>Annotations on both storyboards showing <strong>constraints and barriers</strong> (e.g. screen size limits, age-appropriate content, Pygame limitations)</td>
+      <td><span class="criteria criteria-p3">2B.P3</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
-
-    <!-- ══ Section 6 ══════════════════════════════════════════ -->
-    <tr class="section-row"><td colspan="5">💻 Produce a Computer Game to Meet Client Requirements</td></tr>
     <tr class="task-row" data-id="11">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Beta version of game written in Pygame</td>
+      <td><strong>Screen navigation</strong> diagram – how the player moves between screens (e.g. Menu → Game → Game Over → Menu)</td>
+      <td><span class="criteria criteria-m2">2B.M2</span></td>
       <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
     <tr class="task-row" data-id="12">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Final Asset List</td>
+      <td><strong>Data structures</strong> – description of variables, lists, dictionaries or objects used to store game state (e.g. player position, score, lives)</td>
+      <td><span class="criteria criteria-m2">2B.M2</span></td>
       <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
     <tr class="task-row" data-id="13">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Final game code playable using an IDLE</td>
+      <td><strong>Data validation and error handling</strong> – how invalid inputs or unexpected states are managed (e.g. boundary checks, try/except)</td>
+      <td><span class="criteria criteria-m2">2B.M2</span></td>
       <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
     <tr class="task-row" data-id="14">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Game has sound</td>
+      <td><strong>Controls and events</strong> – identification of which controls (keyboard keys, mouse clicks) need to respond to which events</td>
+      <td><span class="criteria criteria-m2">2B.M2</span></td>
       <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
     <tr class="task-row" data-id="15">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Development diary (change log and justification) – 10 entries minimum</td>
-      <td><span class="deadline" data-date="2025-04-25">Ongoing until&nbsp;25/04/2025</span></td>
+      <td>Written evaluation of <strong>both storyboards</strong> – comparing Proposed Solution A vs B and identifying strengths/weaknesses of each</td>
+      <td><span class="criteria criteria-m2">2B.M2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
 
-    <!-- ══ Section 7 ══════════════════════════════════════════ -->
-    <tr class="section-row"><td colspan="5">🧪 Testing of Developed Computer Game</td></tr>
+    <!-- ══ Section 4: Asset List ══════════════════════════════ -->
+    <tr class="section-row"><td colspan="6">📦 Asset List</td></tr>
     <tr class="task-row" data-id="16">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Completed Functional Testing against Test Plan – plus evidence tests worked OK</td>
-      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
+      <td><strong>Asset list – variables</strong>: table listing all variables with name, data type, purpose and initial value (e.g. score, lives, player_x)</td>
+      <td><span class="criteria criteria-p3">2B.P3</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
     <tr class="task-row" data-id="17">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Evidence of testing game with peers (fellow Y12/Y13 students and/or teachers)</td>
-      <td><span class="deadline" data-date="2026-05-16">16/05/2026</span></td>
+      <td><strong>Asset list – controls &amp; media</strong>: table listing all inputs, on-screen text labels, image files and sound files used in the game</td>
+      <td><span class="criteria criteria-p3">2B.P3</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
 
-    <!-- ══ Section 8 ══════════════════════════════════════════ -->
-    <tr class="section-row"><td colspan="5">📄 Written Review of (Pre-Optimised) Developed Computer Game</td></tr>
+    <!-- ══ Section 5: Pseudo Code & Flowchart ════════════════ -->
+    <tr class="section-row"><td colspan="6">💻 Pseudo Code &amp; Flowchart</td></tr>
     <tr class="task-row" data-id="18">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Review if game meets client requirements (200–300 words)</td>
-      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
+      <td><strong>Pseudo code</strong> for key events and procedures – written in structured English showing logic for main game loop, collision detection, scoring, etc.</td>
+      <td><span class="criteria criteria-p3">2B.P3</span> <span class="criteria criteria-m2">2B.M2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
-
-    <!-- ══ Section 9 ══════════════════════════════════════════ -->
-    <tr class="section-row"><td colspan="5">⚙️ Optimise Developed Computer Game Based on Testing and User Feedback</td></tr>
     <tr class="task-row" data-id="19">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Written justifications for and details of all optimisations with screenshots</td>
-      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
+      <td><strong>Flowchart</strong> showing the processing – diagrams illustrating the program flow including decision points, loops and function calls</td>
+      <td><span class="criteria criteria-p3">2B.P3</span> <span class="criteria criteria-m2">2B.M2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
-
-    <!-- ══ Section 10 ═════════════════════════════════════════ -->
-    <tr class="section-row"><td colspan="5">📊 Written Evaluation of Final (Optimised) Developed Game</td></tr>
     <tr class="task-row" data-id="20">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Detailing how the game could be extended</td>
-      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
-      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
-      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
-    </tr>
-    <tr class="task-row" data-id="21">
-      <td><input type="checkbox" class="done-check" /></td>
-      <td>Evaluating how well the game worked compared to client requirements</td>
-      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
+      <td><strong>List of pre-defined functions/subroutines</strong> – table naming each function, its parameters, return value and what it does</td>
+      <td><span class="criteria criteria-p3">2B.P3</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
 
-    <!-- ══ Section 11 ═════════════════════════════════════════ -->
-    <tr class="section-row"><td colspan="5">🗂️ Written Evidence of Detailed Planning</td></tr>
+    <!-- ══ Section 6: Test Plan & Test Data ══════════════════ -->
+    <tr class="section-row"><td colspan="6">🧪 Test Plan &amp; Test Data</td></tr>
+    <tr class="task-row" data-id="21">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td><strong>Test plan</strong> – table of planned tests covering logic and functionality (test ID, description, test type, expected result)</td>
+      <td><span class="criteria criteria-m2">2B.M2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
     <tr class="task-row" data-id="22">
       <td><input type="checkbox" class="done-check" /></td>
-      <td>Detailed discussion of development of the game</td>
-      <td><span class="deadline" data-date="2026-04-16">16/04/2026</span></td>
+      <td><strong>Test data</strong> – specific input values (valid, invalid and boundary) used to test program inputs and expected outputs</td>
+      <td><span class="criteria criteria-m2">2B.M2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="23">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td>Test plan includes <strong>compilation tests</strong> – checks that the code runs without syntax or import errors</td>
+      <td><span class="criteria criteria-m2">2B.M2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 7: Alternative Solutions ══════════════════ -->
+    <tr class="section-row"><td colspan="6">🔀 Alternative Solutions</td></tr>
+    <tr class="task-row" data-id="24">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td><strong>Brief outline of alternative solutions</strong> – description of other coding languages or frameworks that could have been used (e.g. Scratch, Unity, Godot, JavaScript/Phaser)</td>
+      <td><span class="criteria criteria-m2">2B.M2</span> <span class="criteria criteria-d2">2B.D2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="25">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td><strong>Explanation of why alternative designs were rejected</strong> – reasoned argument for each rejected option (too complex, unsuitable for age 7+, etc.)</td>
+      <td><span class="criteria criteria-d2">2B.D2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+
+    <!-- ══ Section 8: Justification for Design ═══════════════ -->
+    <tr class="section-row"><td colspan="6">✅ Justification for Design Decisions</td></tr>
+    <tr class="task-row" data-id="26">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td><strong>Justification for chosen design</strong> – written evidence explaining how the chosen design fulfils the stated purpose and the project brief requirements</td>
+      <td><span class="criteria criteria-d2">2B.D2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
+      <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
+      <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
+    </tr>
+    <tr class="task-row" data-id="27">
+      <td><input type="checkbox" class="done-check" /></td>
+      <td><strong>Identification and justification of design constraints</strong> – list of constraints (hardware, software, target audience, time) and how the design addresses each one</td>
+      <td><span class="criteria criteria-d2">2B.D2</span></td>
+      <td><span class="deadline" data-date="2026-03-27">27/03/2026</span></td>
       <td><select class="status-select"><option>Not Started</option><option>In Progress</option><option>Complete</option></select></td>
       <td><textarea class="notes-input" rows="1" placeholder="Add notes…"></textarea></td>
     </tr>
@@ -469,11 +612,11 @@
 </table>
 </div>
 
-<footer>BTEC Level 1 &amp; 2 Unit 12: Software Development &nbsp;·&nbsp; Pearson BTEC Specification</footer>
+<footer>BTEC Level 1 &amp; 2 Unit 12: Software Development &nbsp;·&nbsp; Task 2: Design the Program &nbsp;·&nbsp; Issue: 26/01/2026 &nbsp;·&nbsp; Hand-in: 27/03/2026, 3:59pm &nbsp;·&nbsp; Assessor: Christopher Moss</footer>
 
 <script>
   /* ── Storage key ─────────────────────────────────────────── */
-  const STORAGE_KEY = 'unit12_checklist_v1';
+  const STORAGE_KEY = 'unit12_task2_checklist_v2';
 
   /* ── Helpers ─────────────────────────────────────────────── */
   const rows = () => document.querySelectorAll('tr.task-row');
